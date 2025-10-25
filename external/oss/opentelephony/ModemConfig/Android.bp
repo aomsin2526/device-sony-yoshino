@@ -1,0 +1,23 @@
+android_app {
+    name: "ModemConfig",
+    certificate: "platform",
+
+    proprietary: true,
+    privileged: true,
+
+    srcs: ["src/**/*.kt"],
+
+    required: ["privapp_whitelist_com.sony.opentelephony.modemconfig"],
+
+    static_libs: ["SomcModemProperties"],
+
+    sdk_version: "system_current",
+}
+
+prebuilt_etc {
+    name: "privapp_whitelist_com.sony.opentelephony.modemconfig",
+    sub_dir: "permissions",
+    src: "privapp_whitelist_com.sony.opentelephony.modemconfig.xml",
+    proprietary: true,
+    filename_from_src: true,
+}

@@ -215,11 +215,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qti.sdk.sensors.gestures=false \
     ro.qti.sensors.pedometer=false \
-    ro.qti.sensors.step_detector=true \
-    ro.qti.sensors.step_counter=true \
+    ro.qti.sensors.step_detector=false \
+    ro.qti.sensors.step_counter=false \
     ro.qti.sensors.pam=false \
     ro.qti.sensors.scrn_ortn=false \
-    ro.qti.sensors.smd=true \
+    ro.qti.sensors.smd=false \
     ro.qti.sensors.game_rv=true \
     ro.qti.sensors.georv=true \
     ro.qti.sensors.cmc=false \
@@ -278,7 +278,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # setup dm-verity configs.
 PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/soc/1da4000.ufshc/by-name/system
-$(call inherit-product, device/sony/common/common.mk)
+$(call inherit-product, device/sony/yoshino/external/common/common.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, build/target/product/verity.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+
+# Inherit the proprietary files
+$(call inherit-product, vendor/sony/yoshino/yoshino-vendor.mk)
+
+# Build ODM
+PRODUCT_BUILD_ODM_IMAGE := true
+TARGET_COPY_OUT_ODM := odm
+BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := ext4
