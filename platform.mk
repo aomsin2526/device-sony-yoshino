@@ -276,6 +276,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.iwlan_operation_mode=legacy
 
+# vintf
+DEVICE_MANIFEST_FILE += $(PLATFORM_COMMON_PATH)/vintf/manifest.xml
+
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
+    vendor/lineage/config/device_framework_matrix.xml \
+    $(PLATFORM_COMMON_PATH)/vintf/device_framework_matrix.xml
+
 # setup dm-verity configs.
 PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/soc/1da4000.ufshc/by-name/system
 $(call inherit-product, device/sony/yoshino/external/common/common.mk)
