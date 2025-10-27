@@ -43,8 +43,7 @@ PRODUCT_PACKAGES += \
     sct_service.rc \
     sensors.rc \
     ta_qmi.rc \
-    tftp_server.rc \
-    wpa_supplicant.rc
+    tftp_server.rc
 
 # RIL
 PRODUCT_PACKAGES += \

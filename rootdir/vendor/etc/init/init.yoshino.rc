@@ -33,6 +33,10 @@ on boot
     chown wifi wifi /sys/kernel/boot_wlan/boot_wlan
     chmod 777 /sys/kernel/boot_wlan/boot_wlan
 
+    # Charging control
+    chmod 777 /sys/class/power_supply/battery/charging_enabled
+    chmod 777 /sys/class/power_supply/battery/lrc_socmax
+
     # update foreground cpuset now that processors are up
     write /dev/cpuset/foreground/cpus 0-7
     write /dev/cpuset/foreground/boost/cpus 0-7
