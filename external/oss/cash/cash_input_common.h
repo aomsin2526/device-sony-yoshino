@@ -42,12 +42,12 @@ struct thread_data {
 	void *thread_func;
 };
 
-bool cash_thread_run[THREAD_MAX];
-pthread_t cash_pthreads[THREAD_MAX];
-struct pollfd cash_pfds[FD_MAX];
-struct epoll_event cash_pollevt[FD_MAX];
-int cash_pollfd[FD_MAX];
-int cash_pfdelay_ms[FD_MAX];
+extern bool cash_thread_run[THREAD_MAX];
+extern pthread_t cash_pthreads[THREAD_MAX];
+extern struct pollfd cash_pfds[FD_MAX];
+extern struct epoll_event cash_pollevt[FD_MAX];
+extern int cash_pollfd[FD_MAX];
+extern int cash_pfdelay_ms[FD_MAX];
 
 static const char sysfs_input_str[] = "/sys/class/input/input";
 static const char devfs_input_str[] = "/dev/input/event";

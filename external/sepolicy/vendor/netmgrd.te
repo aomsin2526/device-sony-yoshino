@@ -24,7 +24,6 @@ allow netmgrd self:capability {
 };
 
 set_prop(netmgrd, vendor_net_prop)
-set_prop(netmgrd, net_rmnet_prop)
 get_prop(netmgrd, hwservicemanager_prop)
 
 allow netmgrd netmgrd_socket:dir w_dir_perms;
@@ -53,12 +52,19 @@ r_dir_file(netmgrd, sysfs_msm_subsys)
 r_dir_file(netmgrd, sysfs_soc)
 r_dir_file(netmgrd, sysfs_esoc)
 
+allow netmgrd vendor_data_qmipriod_prop:property_service set;
+allow netmgrd vendor_data_shsusr_prop:property_service set;
+
 allow netmgrd proc_net:file rw_file_perms;
 
 allow netmgrd netmgr_vendor_data_file:dir rw_dir_perms;
 allow netmgrd netmgr_vendor_data_file:file create_file_perms;
 
 allow netmgrd vendor_toolbox_exec:file rx_file_perms;
+
+allow netmgrd diag:unix_stream_socket connectto;
+allow netmgrd self:tipc_socket { bind create };
+allow netmgrd sysfs:file { open read };
 
 dontaudit netmgrd kernel:system module_request;
 dontaudit netmgrd self:system module_request;

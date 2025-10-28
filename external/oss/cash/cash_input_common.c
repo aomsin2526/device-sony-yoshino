@@ -26,6 +26,12 @@
 
 #include "cash_input_common.h"
 
+bool cash_thread_run[THREAD_MAX];
+pthread_t cash_pthreads[THREAD_MAX];
+struct pollfd cash_pfds[FD_MAX];
+struct epoll_event cash_pollevt[FD_MAX];
+int cash_pollfd[FD_MAX];
+int cash_pfdelay_ms[FD_MAX];
 
 /* Start/stop threads */
 int cash_input_threadman(bool start, struct thread_data *thread_data)

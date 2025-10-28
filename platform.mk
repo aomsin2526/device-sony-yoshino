@@ -297,7 +297,10 @@ PRODUCT_PACKAGES += \
     android.hardware.secure_element@1.1.vendor \
     android.hardware.secure_element@1.2.vendor \
     android.frameworks.sensorservice@1.0.vendor \
-    vendor.lineage.health-service.default
+    vendor.lineage.health-service.default \
+    libhidlbase_shim \
+    libhidlbase-v32 \
+    libhidlbase-v32.vendor
 
 # Health
 TARGET_HEALTH_CHARGING_CONTROL_CHARGING_PATH := /sys/class/power_supply/battery/charging_enabled
@@ -310,7 +313,6 @@ TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_TOGGLE := true
 PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/soc/1da4000.ufshc/by-name/system
 $(call inherit-product, device/sony/yoshino/external/common/common.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, build/target/product/verity.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 # Inherit the proprietary files

@@ -1,42 +1,41 @@
-cc_binary {
-    name: "android.hardware.health@2.0-service.sony",
-    init_rc: ["android.hardware.health@2.0-service.sony.rc"],
-    vendor: true,
+cc_defaults {
+    name: "android.hardware.health-service.sony-defaults",
+
+    defaults: ["libhealth_aidl_impl_user"],
+
     relative_install_path: "hw",
-    cflags: [
-        "-Wall",
-        "-Werror",
-        "-Wno-unused",
-        "-fexceptions",
-    ],
+
+    vintf_fragments: ["android.hardware.health-service.sony.xml"],
+
+    static_libs: ["libhealth_aidl_impl"],
+
     srcs: [
-        "HealthService.cpp",
+        "main.cpp",
         "CycleCountBackupRestore.cpp",
         "LearnedCapacityBackupRestore.cpp",
     ],
-    static_libs: [
-        "android.hardware.health@2.0-impl",
-        "android.hardware.health@1.0-convert",
-        "libbatterymonitor",
-        // libhealthservice is needed for health_service_main()
-        "libhealthservice",
-        // Storage is needed by the HAL definition, use default
-        "libhealthstoragedefault",
-    ],
-    shared_libs: [
-        "android.hardware.health@2.0",
-        "libbase",
-        "libcutils",
-        "libhidlbase",
-        "liblog",
-        "libutils",
-    ],
-    header_libs: [
-        // We only need BatteryService.h
-        "libbatteryservice_headers",
-    ],
 
-    vintf_fragments: [
-        "manifest_android.hardware.health@2.0.xml",
+    cflags: [
+        "-Wall",
+        "-Werror",
+        "-fexceptions",
     ],
+}
+
+cc_binary {
+    name: "android.hardware.health-service.sony",
+    defaults: ["android.hardware.health-service.sony-defaults"],
+    init_rc: ["android.hardware.health-service.sony.rc"],
+    vendor: true,
+    recovery: false,
+    overrides: ["charger"],
+}
+
+cc_binary {
+    name: "android.hardware.health-service.sony_recovery",
+    defaults: ["android.hardware.health-service.sony-defaults"],
+    init_rc: ["android.hardware.health-service.sony_recovery.rc"],
+    vendor: false,
+    recovery: true,
+    overrides: ["charger.recovery"],
 }

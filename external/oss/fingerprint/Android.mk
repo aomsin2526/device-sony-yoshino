@@ -5,12 +5,12 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 LOCAL_MODULE := android.hardware.biometrics.fingerprint@2.1-service.sony
 LOCAL_INIT_RC := android.hardware.biometrics.fingerprint@2.1-service.sony.rc
+LOCAL_VINTF_FRAGMENTS := android.hardware.biometrics.fingerprint.xml
 LOCAL_PROPRIETARY_MODULE := true
 LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_SRC_FILES := \
     $(call all-subdir-cpp-files) \
     QSEEComFunc.c \
-    ion_buffer.c \
     common.c
 
 # ---------------- FPC ----------------
@@ -47,20 +47,25 @@ ifneq ($(filter-out loire tone yoshino tama,$(SOMC_PLATFORM)),)
 LOCAL_CFLAGS += -DFINGERPRINT_TYPE_EGISTEC
 endif
 
-ifeq ($(filter-out kumano seine edo sagami,$(SOMC_PLATFORM)),)
+# Firmware custom location
+ifeq ($(filter-out kumano seine edo sagami nagara yodo,$(SOMC_PLATFORM)),)
 LOCAL_CFLAGS += \
-    -DEGISTEC_SAVE_TEMPLATE_RETURNS_SIZE \
-    -DEGIS_QSEE_APP_NAME=\"egista\" \
     -DEGIS_QSEE_APP_PATH=\"/odm/firmware\"
-else ifeq ($(filter-out lena murray,$(SOMC_PLATFORM)),)
+endif
+
+# Firmware name and atributes
+ifeq ($(filter-out kumano seine edo sagami lena murray,$(SOMC_PLATFORM)),)
 LOCAL_CFLAGS += \
     -DEGISTEC_SAVE_TEMPLATE_RETURNS_SIZE \
     -DEGIS_QSEE_APP_NAME=\"egista\"
 else ifeq ($(filter-out nagara,$(SOMC_PLATFORM)),)
 LOCAL_CFLAGS += \
     -DEGISTEC_SAVE_TEMPLATE_RETURNS_SIZE \
-    -DEGIS_QSEE_APP_PATH=\"/odm/firmware\" \
     -DEGIS_QSEE_APP_NAME=\"egista64\"
+else ifeq ($(filter-out zambezi yodo,$(SOMC_PLATFORM)),)
+LOCAL_CFLAGS += \
+    -DEGISTEC_SAVE_TEMPLATE_RETURNS_SIZE \
+    -DEGIS_QSEE_APP_NAME=\"egisap\"
 else
 LOCAL_CFLAGS += \
     -DEGIS_QSEE_APP_NAME=\"egisap32\"
@@ -82,9 +87,9 @@ LOCAL_SHARED_LIBRARIES := \
     android.hardware.biometrics.fingerprint@2.1 \
     libcutils \
     libdl \
+    libdmabufheap \
     libhardware \
     libhidlbase \
-    libion \
     liblog \
     libutils
 

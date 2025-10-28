@@ -4,6 +4,7 @@ vendor.nxp.nxpese::INxpEse                                              u:object
 # QTI IMS:
 com.qualcomm.qti.imscmservice::IImsCmService                            u:object_r:vnd_qti_imscms_hwservice:s0
 com.qualcomm.qti.uceservice::IUceService                                u:object_r:vnd_qti_uce_hwservice:s0
+com.qualcomm.qti.uceservice@2.3::IUceService                            u:object_r:vnd_qti_uce_hwservice:s0
 vendor.qti.ims.callinfo::IService                                       u:object_r:vnd_qti_ims_callinfo_hwservice:s0
 vendor.qti.ims.factory::IImsFactory                                     u:object_r:vnd_qti_ims_factory_hwservice:s0
 vendor.qti.imsrtpservice::IRTPService                                   u:object_r:hal_imsrtp_hwservice:s0
@@ -30,3 +31,6 @@ com.qualcomm.qti.dpm.api::IdpmQmi                                       u:object
 # SoMC modem switcher:
 vendor.somc.hardware.miscta::IMisctaGlobal                              u:object_r:vnd_somc_miscta_hwservice:s0
 vendor.somc.hardware.modemswitcher::IModemSwitcher                      u:object_r:vnd_somc_modemswitcher_hwservice:s0
+# QTI camera:
+vendor.qti.hardware.camera.aon::IAONService                             u:object_r:hal_camera_hwservice:s0
+vendor.qti.hardware.camera.postproc::IPostProcService                   u:object_r:hal_camera_hwservice:s0

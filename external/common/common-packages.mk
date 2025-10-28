@@ -157,10 +157,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libLLVM
 
-# ExtendedSettings
-PRODUCT_PACKAGES += \
-    ExtendedSettings
-
 # Charger
 PRODUCT_PACKAGES += \
     charger_res_images

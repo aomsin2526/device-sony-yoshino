@@ -71,8 +71,7 @@ PRODUCT_PACKAGES += \
 
 # GNSS
 PRODUCT_PACKAGES += \
-    android.hardware.gnss@2.1-impl-qti \
-    android.hardware.gnss@2.1-service-qti
+    android.hardware.gnss-aidl-service-qti
 
 # Light
 PRODUCT_PACKAGES += \
@@ -80,7 +79,7 @@ PRODUCT_PACKAGES += \
 
 # Health
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.0-service.sony
+    android.hardware.health-service.sony
 
 ifeq ($(TARGET_VIBRATOR_V1_2),true)
 # QTI Haptics Vibrator

@@ -42,3 +42,7 @@ include device/sony/yoshino/external/common/CommonConfig.mk
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 BUILD_BROKEN_INCORRECT_PARTITION_IMAGES := true
+
+# Build
+BUILD_BROKEN_CLANG_PROPERTY := true
+BUILD_BROKEN_PLUGIN_VALIDATION := soong-qti_kernel_headers_defaults
