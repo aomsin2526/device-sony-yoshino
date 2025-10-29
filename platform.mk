@@ -299,8 +299,11 @@ PRODUCT_PACKAGES += \
     android.frameworks.sensorservice@1.0.vendor \
     vendor.lineage.health-service.default \
     libhidlbase_shim \
-    libhidlbase-v32 \
-    libhidlbase-v32.vendor
+    android.hardware.bluetooth@1.0.vendor \
+    android.hardware.bluetooth.audio-impl \
+    libcld80211 \
+    libprotobuf-cpp-full-3.9.1-vendorcompat \
+    libprotobuf-cpp-lite-3.9.1-vendorcompat
 
 # Health
 TARGET_HEALTH_CHARGING_CONTROL_CHARGING_PATH := /sys/class/power_supply/battery/charging_enabled
@@ -308,6 +311,10 @@ TARGET_HEALTH_CHARGING_CONTROL_CHARGING_ENABLED := 0
 TARGET_HEALTH_CHARGING_CONTROL_CHARGING_DISABLED := 1
 TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_BYPASS := false
 TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_TOGGLE := true
+
+# GL
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hardware.egl=adreno
 
 # setup dm-verity configs.
 PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/platform/soc/1da4000.ufshc/by-name/system

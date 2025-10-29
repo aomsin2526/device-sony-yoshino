@@ -134,6 +134,12 @@ on late-fs
     mount_all /vendor/etc/fstab.${ro.hardware} --late
 
 on post-fs-data
+    # WLAN MAC
+    chown wifi wifi /sys/module/wlan/parameters/fwpath
+    chown wifi wifi /sys/kernel/boot_wlan/boot_wlan
+    chmod 777 /sys/kernel/boot_wlan/boot_wlan
+    write /sys/kernel/boot_wlan/boot_wlan 1
+
     # We can start netd here before in is launched in common init.rc on zygote-start
     start netd
 

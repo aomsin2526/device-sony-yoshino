@@ -28,11 +28,6 @@ on init
     write /sys/block/dm-1/queue/read_ahead_kb 2048
 
 on boot
-    # WLAN MAC
-    chown wifi wifi /sys/module/wlan/parameters/fwpath
-    chown wifi wifi /sys/kernel/boot_wlan/boot_wlan
-    chmod 777 /sys/kernel/boot_wlan/boot_wlan
-
     # Charging control
     chmod 777 /sys/class/power_supply/battery/charging_enabled
     chmod 777 /sys/class/power_supply/battery/lrc_socmax

@@ -30,7 +30,8 @@ PRODUCT_SOONG_NAMESPACES += \
     $(PLATFORM_COMMON_PATH) \
     vendor/qcom/opensource/core-utils \
     vendor/qcom/opensource/display/$(display_platform) \
-    vendor/qcom/opensource/display-commonsys-intf/$(display_platform)
+    vendor/qcom/opensource/display-commonsys-intf/$(display_platform) \
+    hardware/qcom/wlan/legacy
 
 # Build scripts
 SONY_CLEAR_VARS := $(COMMON_PATH)/sony_clear_vars.mk
